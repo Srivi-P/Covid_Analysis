@@ -1,4 +1,4 @@
-u# Covid_Analysis
+# Covid_Analysis
 SELECT  * FROM `sql-learning-test.Covid_Analyze.Covid_Vaccine` 
 where continent is not null
 order by 3,4;
