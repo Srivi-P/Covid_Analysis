@@ -20,14 +20,14 @@ from sql-learning-test.Covid_Analyze.Covid_Death
 where continent is not null
 order by 1,2;
 
--- finding totalcases vs population United States
+-- finding total cases vs. population United States
 -- shows infected population percentage 
 select location,date,total_cases, population,(total_cases/population)*100 as population_percentage 
 from sql-learning-test.Covid_Analyze.Covid_Death
 --where location like "%States"
 order by 1,2;
 
--- finding highest infection rate of country comapring with its population
+-- finding the highest infection rate of a country comparing with its population
 
 select location,population,max(total_cases) as Highest_infection_count,max((total_deaths/total_cases)*100) as Percentagepupulationinfected
 from sql-learning-test.Covid_Analyze.Covid_Death
@@ -80,7 +80,7 @@ where continent is not null);
 
 select * from sql-learning-test.Covid_Analyze.Covid_Vaccine;
 
---Joining two tabels 
+--Joining two tables 
 
 select * from
 sql-learning-test.Covid_Analyze.Covid_Death as D
@@ -95,7 +95,7 @@ on D.location=V.location and D.date=V.date
 where D.continent is not null
 order by 2,3;
 
---finding running total of total new vaccinations 
+--finding a running total of total new vaccinations 
 select D.continent,D.location,D.date,D.population,V.new_vaccinations,
 sum(V.new_vaccinations) over (partition by D.location order by D.location,D.date) as running_tot
 from sql-learning-test.Covid_Analyze.Covid_Death as D
@@ -121,7 +121,7 @@ order by vaccinatedPercentage desc;
 
 
 
---***creating view for visualization
+--*** Creating view for visualization
 
 --total cases vs total deaths
 create or replace view sql-learning-test.dataset.TotCaseVsTotDeaths as
